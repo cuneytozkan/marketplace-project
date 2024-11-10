@@ -71,3 +71,16 @@ class DbMessage(Base):
     # Relationships
     conversation = relationship("DbConversation", back_populates="messages")  
     sender = relationship("DbUser",foreign_keys=[sender_id], back_populates="message_sending")  
+
+
+# class DbMessage(Base):
+#     __tablename__ = "messages"
+#     id = Column(Integer, primary_key=True, index=True)
+#     conversation_id = Column(Integer, ForeignKey("conversations.id"), nullable=False)
+#     sender_id = Column(Integer, ForeignKey("users.user_id"), nullable=False)
+#     content = Column(Text, nullable=False)
+#     timestamp = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    
+#     # Relationships
+#     conversation = relationship("DbConversation", back_populates="messages")  
+#     sender = relationship("DbUser",foreign_keys=[sender_id], back_populates="message_sending")  
